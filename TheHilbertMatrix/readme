@@ -4,8 +4,7 @@
 !---------------!
 1. (10 points) LU-decomposition.
 Run "python lu_fact.py arg1"
-if arg1 is of type Integer, then the subroutine will generate a Hilbert matrix for you.
-if arg2 is of type Matrix, then the subroutine will take the matrix as is.
+arg1 must be a .dat file containing data for the matrix
 
 It will output L, U, and ||LU − A||∞ on the terminal.
 
@@ -46,5 +45,4 @@ obtained with LU and both QR decompositions; one for ||LU − H||∞, and two mo
 for ||QR − H||∞ one for each case of QR-factorization. Your plots will probably look
 better in a Log scale, and can be grouped in a way that makes comparisons possible.
 The discussion should address the questions posted in the description of the project.
-
 
