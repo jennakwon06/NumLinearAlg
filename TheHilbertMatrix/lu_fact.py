@@ -1,7 +1,13 @@
 # Author: Jenna Kwon
+
+"""
+LU factorization subroutine
+input: .dat file containing an input matrix A
+Output: A, L, U, error
+"""
+
 import numpy as np
 import sys
-import pprint
 
 # input : .dat file
 # Output :  L, U, and error |LU-A|inf
@@ -9,40 +15,49 @@ import pprint
 
 def lu_fact(file_name):
 
-    if file_name is None:
-        exit()
+    array = np.loadtxt(file_name)
 
-    # A = ndarray
-    A = np.loadtxt(file_name, unpack=True)
+    # Dimension, #row
+    dims = array.shape
+    n = dims[0]  # col
+    m = dims[1]  # row
 
-    # Dimension
-    n = A.shape[0]
+    if m != n:
+        A = array[:, :-1]  # slice out the last column! called from solve_lu_b
+    else:
+        A = array  # called from command line
 
-    # Initialize L & U.
-    # L = I, U = A for Doolittle algorithm
+    # Initialize L & U as L = I, U = A for Doolittle algorithm
     L = np.identity(n, dtype='d')
     U = A
 
     # LU fact without partial pivoting
-    # Doolittle algorithm is used
-    # Assumes that factorization exists
-    # Aij = sum of Lip*Upj, p = counter
-    # Fill in L below the diagonal
-    # Lij = (aij - sum of lip * upj) / ujj. i > j
-    # Uij = (aij - sum of lip  * upj).
+    # Pseudo code was referred from a cited source below:
+    # "LU factorization: Lecture 20 in "Numerical Linear Algebra" by Trefethen and Bau, SIAM, Philadelphia, 1997"
+    #
+    # This algorithm assumes that factorization exists
+    # Idea is to introduce 0s in U below the diagonal and to fill in L
     # Fill in U above the diagonal
     for i in range(0, n - 1):
         for j in range(i + 1, n):
             L[j, i] = U[j, i] / U[i, i]
-            U[j, i:] = U[j, i:] - L[j, i] * U[i, i:]
-            U[j, i] = 0
+            U[j, i:n] = U[j, i:] - (L[j, i] * U[i, i:n])
 
-    print A, L, U
+    # Calculate error, LU - A
+    # Error in this part = maximum norm (infinity)
+    return A, L, U, max(np.sum(L*U-A, axis=1))
 
-
-# For when lu_fact is used as a stand-alone module
+# This is only or when lu_fact is used as a stand-alone module
 # Read command line argument. Must be exactly one argument.
+# It outputs on the consoorle
 if __name__ == '__main__':
-    lu_fact(sys.argv[1])
-# else:
-#     #do nothing
+    A, L, U, max_norm = lu_fact(sys.argv[1])
+    np.set_printoptions(precision=6, suppress=True)
+    print 'A:'
+    print A
+    print '\nL:'
+    print L
+    print '\nU:'
+    print U
+    print '\nError:'
+    print max_norm
