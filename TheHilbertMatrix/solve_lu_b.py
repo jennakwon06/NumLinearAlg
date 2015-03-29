@@ -10,13 +10,17 @@ import numpy as np
 import sys
 from lu_fact import lu_fact
 
+
 def solve_lu_b(file_name):
 
+    # get matrices and error from lu_fact
     A, L, U, error = lu_fact(file_name)
     np.set_printoptions(precision=6, suppress=True)
-    augmented = np.loadtxt(file_name) # dat file contains an augmented matrix
-    n = augmented.shape[0]  # row
-    b = augmented[:, n]  # isolate b
+
+    # isolate b
+    augmented = np.loadtxt(file_name)
+    n = augmented.shape[0]
+    b = augmented[:, n]
 
     # Implement forward-backward substitution
     # LUx = B

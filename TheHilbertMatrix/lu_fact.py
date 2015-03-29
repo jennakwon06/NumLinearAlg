@@ -8,9 +8,13 @@ Output: A, L, U, error
 
 import numpy as np
 import sys
+import os
 
 # input : .dat file
 # Output :  L, U, and error |LU-A|inf
+
+
+print os.path.dirname(os.path.abspath(__file__))
 
 
 def lu_fact(file_name):
