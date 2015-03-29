@@ -4,22 +4,21 @@
 !---------------!
 1. (10 points) LU-decomposition.
 Run "python lu_fact.py arg1"
-arg1 must be a .dat file containing data for the matrix
+arg1 must be a .dat file containing a space-separated data of the matrix, A
 
-It will output L, U, and ||LU − A||∞ on the terminal.
+It will output L, U, and ||LU − A||∞ on the console.
 
 !---------------!
 2. (20 points) QR-factorization.
 Run "python qr_fact_househ arg1", or "python qr_fact_givens arg1"
-if arg1 is of type Integer, then the subroutine will generate a Hilbert matrix for you.
-if arg2 is of type Matrix, then the subroutine will take the matrix as is.
+arg1 must be a .dat file containing a space-separated data of the matrix, A
 
-It will output Q, R, and ||QR − A||∞ on the terminal.
+It will output Q, R, and ||QR − A||∞ on the console.
 
 !---------------!
 3. (10 points) Solve Ax = b
 Run "python solve_lu_b arg1" or "python solve_qr_b qrg1"
-arg1 must be of type Matrix, with dimension of n x (n+1). It must represent an augmented matrix [A|b]
+arg1 must be a .dat file containing a space-separated data of the augmented matrix [A|b]
 
 It will output the solution vector xsol, and the error ||Axsol − b||.
 
@@ -37,7 +36,6 @@ Xsol = array
 !---------------!
 5. (10 points) Plots and discussion
 Please see written.docx
-
 
 It should include plots of the errors obtained for the
 Hilbert matrix as a function of n. You should have 3 plots for the errors of xsol, each
