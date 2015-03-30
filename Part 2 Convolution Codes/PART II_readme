@@ -1,0 +1,9 @@
+PART II
+1. Encoding
+The encoding function takes a single n value and produces a x, A0, A1, y0, y1, and yStream
+
+2. Jacobi/Gauss-Seidel (Standard)
+These two functions take in a dat file that contains an nxn matrix A and an nx1 vector b, a tolerance threshhold, and when run will ask for the user input to get an initial guess vector. This will report the number of iterations and the final answer, or that the method did not converge.
+
+3. Decoding
+There are two functions that both take a single yStream. One uses the Jacobi iteraitve method, and one uses Gauss-Seidel. This will return an xStream
