@@ -1,4 +1,4 @@
-<The Power Method, Guide or Users>
+<The Power Method, Guide for Users>
 
 
 !---------------!
