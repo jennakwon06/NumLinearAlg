@@ -43,13 +43,17 @@ def solve_lu_b(file_name):
             x[p] = x[p] - U[p, q] * x[q]
         x[p] = x[p] / U[p, p]
 
-    return x
+    error_final = np.linalg.norm(np.asmatrix(A)*np.asmatrix(x) - b)
+
+    return x, error_final
 
 # This is only or when lu_fact is used as a stand-alone module
 # Read command line argument. Must be exactly one argument.
 # It outputs on the consoorle
 if __name__ == '__main__':
-    solution = solve_lu_b(sys.argv[1])
+    solution, error = solve_lu_b(sys.argv[1])
     np.set_printoptions(precision=6, suppress=True)
     print 'Xsol:'
     print solution
+    print '\nError ||Ax(sol) - B||: '
+    print error

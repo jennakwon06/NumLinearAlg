@@ -53,13 +53,17 @@ def solve_qr_b(argv):
             x[p] = x[p] - R[p, q] * x[q]
         x[p] = x[p] / R[p, p]
 
-    return x
+    error_final = np.linalg.norm(np.asmatrix(A)*np.asmatrix(x) - b)
+
+    return x, error_final
 
 # This is only or when lu_fact is used as a stand-alone module
 # Read command line argument. Must be exactly one argument.
 # It outputs on the console
 if __name__ == '__main__':
-    solution = solve_qr_b(sys.argv[1:])
+    solution, error = solve_qr_b(sys.argv[1:])
     np.set_printoptions(precision=6, suppress=True)
-    print 'Xsol:'
+    print 'Xsol: '
     print solution
+    print '\nError ||Ax(sol) - B||: '
+    print error

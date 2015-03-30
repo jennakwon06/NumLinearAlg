@@ -24,6 +24,7 @@ def qr_fact_givens(file_name):
 
     if m != n:
         A = array[:, :-1]  # slice out the last column! called from solve_lu_b
+        m -= 1
     else:
         A = array  # called from command line
 
@@ -56,7 +57,7 @@ def qr_fact_givens(file_name):
     for arr in listofGt:
         Q = np.asmatrix(Q) * np.asmatrix(arr)
 
-    return A, Q, R, max(np.sum(Q*R-A, axis=1, dtype='d'))
+    return A, Q, R, max(np.sum(np.asmatrix(Q)*np.asmatrix(R)-A, axis=1, dtype='d'))
 
 
 def generate_cos_sin(a, b):

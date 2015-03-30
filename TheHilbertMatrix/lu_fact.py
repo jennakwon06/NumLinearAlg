@@ -23,11 +23,12 @@ def lu_fact(file_name):
 
     # Dimension, #row
     dims = array.shape
-    n = dims[0]  # col
-    m = dims[1]  # row
+    n = dims[0]  # row
+    m = dims[1]  # col
 
     if m != n:
         A = array[:, :-1]  # slice out the last column! called from solve_lu_b
+        m -= 1
     else:
         A = array  # called from command line
 
@@ -49,7 +50,7 @@ def lu_fact(file_name):
 
     # Calculate error, LU - A
     # Error in this part = maximum norm (infinity)
-    return A, L, U, max(np.sum(L*U-A, axis=1))
+    return A, L, U, max(np.sum(np.asmatrix(L)*np.asmatrix(U)-A, axis=1, dtype='d'))
 
 # This is only or when lu_fact is used as a stand-alone module
 # Read command line argument. Must be exactly one argument.
