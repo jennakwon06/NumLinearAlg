@@ -1,0 +1,1 @@
+The gauss-seidel iterative method is much quicker than the jacobi method. The n is very important because the n and n alone dictates the A0 and A1 matrices. It also correlates to the number of iterations. The larger the n, the more number of iterations it will take to reach desired precision.

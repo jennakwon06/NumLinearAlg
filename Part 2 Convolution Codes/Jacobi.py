@@ -16,6 +16,9 @@ def jacobi(file_name, tolIn):
     bdim = (aRows, 1)
     b = np.zeros(bdim)
 
+    s = raw_input("Please provide list of your guess values separated by spaces, e.g. 1 2 3: ")
+    guess = np.matrix(s)
+
 #Creates nx1 b matrix
     for j in range(0, aRows):
        b[j,0] = A[j, aCols-1]
@@ -39,7 +42,6 @@ def jacobi(file_name, tolIn):
         prevGuess[0,i] = 1000
 
 #Establishes variables
-    guess = np.zeros((1, aRows))
     guess2 = np.zeros((1, aRows))
     limit = 0
     aRows = int(A.shape[0])
@@ -70,12 +72,27 @@ def jacobi(file_name, tolIn):
     print (guess)
     print ('\n')
 
-    if limit >= 100:
-        print("Did not converge after 100 iterations")
-    else:
-        print("Took " + str(limit) + " iterations to converge")
-        return(limit)
 
+    if limit >= 100:
+        statement = ("Did not converge after 100 iterations")
+        return statement
+    else:
+        statement = ("Took " + str(limit) + " iterations to converge")
+        return limit, guess, statement
+
+# This is only or when jacobi is used as a stand-alone module
+# Read command line argument. Must be exactly one argument.
+# It outputs on the console
+if __name__ == '__main__':
+    limit, guess, statement = jacobi(sys.argv[1], sys.argv[2])
+    np.set_printoptions(precision=6, suppress=True)
+
+    print ('\n')
+    print(limit)
+    print ('\n')
+    print (guess)
+    print ('\n')
+    print(statement)
 #jacobi("c.dat", 1e-8)
 
 
