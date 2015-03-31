@@ -71,9 +71,24 @@ def gauss_seidel(file_name, tolIn):
     print ('\n')
 
     if limit >= 100:
-        print("Did not converge after 100 iterations")
+        statement = ("Did not converge after 100 iterations")
+        return statement
     else:
-        print("Took " + str(limit) + " iterations to converge")
-        return(limit)
+        statement = ("Took " + str(limit) + " iterations to converge")
+        return limit, guess, statement
+
+# This is only or when gauss_seidel is used as a stand-alone module
+# Read command line argument. Must be exactly one argument.
+# It outputs on the console
+if __name__ == '__main__':
+    limit, guess, statement = gauss_seidel(sys.argv[1], sys.argv[2])
+    np.set_printoptions(precision=6, suppress=True)
+
+    print ('\n')
+    print(limit)
+    print ('\n')
+    print (guess)
+    print ('\n')
+    print(statement)
 
 #gauss_seidel("c.dat", 1e-8)
