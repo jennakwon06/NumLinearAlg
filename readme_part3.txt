@@ -13,7 +13,7 @@ will report that it did not converge on the console.
 
 !---------------!
 2. (9 points) Discussion.
-Please see written_part3.pdf
+Please see written_part3.docx
 
 It should address the questions posted in the description of the project.
 
