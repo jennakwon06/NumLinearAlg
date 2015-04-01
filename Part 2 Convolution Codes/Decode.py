@@ -9,8 +9,6 @@ def decode():
     y0 = np.matrix(s)
     s = raw_input("Please provide list of your y1 values separated by spaces, e.g. 1 2 3: ")
     y1 = np.matrix(s)
-    s = raw_input("Please provide list of your guess values (equal to number of rows) separated by spaces, e.g. 1 2 3: ")
-    guess = np.matrix(s)
     guess3 = np.matrix(s)
     x = y0.shape
     n = (x[1])
@@ -27,6 +25,7 @@ def decode():
 
     y0 = y0.transpose()
     y1 = y1.transpose()
+    guess = np.zeros((1,n))
 
     xA0 = np.zeros((n,1))
     xA1 = np.zeros((n,1))
@@ -144,7 +143,7 @@ def decode():
         limit2 = limit2 + 1
 
 
-####^^^ Implements code from Jacobi Method ^^^###
+####^^^ Implements code from Gauss Seidel Method ^^^###
 
     if limit >= 100:
         statement = ("Did not converge after 100 iterations")
@@ -152,7 +151,7 @@ def decode():
     else:
         statement = ("Took " + str(limit) + " iterations to converge using Jacobi Method")
         statement2 = ("Took " + str(limit2) + " iterations to converge using Gauss Seidel Method")
-        return limit, limit2, guess, statement, statement2
+        return limit, limit2, xStream, statement, statement2
 
     print ('\n')
     print("Jacobi iterations:")
@@ -174,7 +173,7 @@ if __name__ == '__main__':
     np.set_printoptions(precision=6, suppress=True)
 
 
-     print ('\n')
+    print ('\n')
     print (xStream)
     print ('\n')
     print(statement)

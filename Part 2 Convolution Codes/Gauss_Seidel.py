@@ -31,7 +31,7 @@ def gauss_seidel(file_name, tolIn):
     print ('\n')
 
 #Sets tolerance
-    tol = tolIn
+    tol = float(tolIn)
 
 #Sets initial previous guess so loop does not stop first try
     prevGuess = np.zeros((1, aRows))
@@ -48,6 +48,7 @@ def gauss_seidel(file_name, tolIn):
 
 #Runs while the norm of the (previous guess vector - the current guess) is less than the tolerance or max iterations are
 #reached.
+
     while ((np.linalg.norm(guess - prevGuess) > tol) and limit < 100):
 
         if runOnce:
