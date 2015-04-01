@@ -9,8 +9,6 @@ def decode():
     y0 = np.matrix(s)
     s = raw_input("Please provide list of your y1 values separated by spaces, e.g. 1 2 3: ")
     y1 = np.matrix(s)
-    s = raw_input("Please provide list of your guess values (equal to number of rows) separated by spaces, e.g. 1 2 3: ")
-    guess = np.matrix(s)
     guess3 = np.matrix(s)
     x = y0.shape
     n = (x[1])
@@ -27,6 +25,7 @@ def decode():
 
     y0 = y0.transpose()
     y1 = y1.transpose()
+    guess = np.zeros((1,n))
 
     xA0 = np.zeros((n,1))
     xA1 = np.zeros((n,1))
@@ -144,15 +143,15 @@ def decode():
         limit2 = limit2 + 1
 
 
-####^^^ Implements code from Jacobi Method ^^^###
+####^^^ Implements code from Gauss Seidel Method ^^^###
 
     if limit >= 100:
         statement = ("Did not converge after 100 iterations")
         return statement
     else:
         statement = ("Took " + str(limit) + " iterations to converge using Jacobi Method")
-        statement2 = ("Took " + str(limit2) + " iterations to converge using Jacobi Method")
-        #return limit, limit2, guess, statement, statement2
+        statement2 = ("Took " + str(limit2) + " iterations to converge using Gauss Seidel Method")
+        return limit, limit2, xStream, statement, statement2
 
     print ('\n')
     print("Jacobi iterations:")
@@ -167,17 +166,18 @@ def decode():
 
 
 # This is only or when gauss_seidel is used as a stand-alone module
-# Read command line argument. Must be exactly one argument.
+# Read command line argument. Takes no inputs.
 # It outputs on the console
-#if __name__ == '__main__':
-#    limit, limit2, xStream, statement = decode()
-#    np.set_printoptions(precision=6, suppress=True)
+if __name__ == '__main__':
+    limit, limit2, xStream, statement, statement2 = decode()
+    np.set_printoptions(precision=6, suppress=True)
 
-#    print ('\n')
-#    print(limit)
-#    print ('\n')
-#    print (xStream)
-#    print ('\n')
-#    print(statement)
 
-decode()
+    print ('\n')
+    print (xStream)
+    print ('\n')
+    print(statement)
+    print ('\n')
+    print(statement2)
+
+#decode()

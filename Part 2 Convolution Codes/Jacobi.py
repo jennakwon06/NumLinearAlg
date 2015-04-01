@@ -34,7 +34,7 @@ def jacobi(file_name, tolIn):
     print(b)
 
 #Sets tolerance
-    tol = tolIn
+    tol = float(tolIn)
 
 #Sets intial previous guess so loop does not stop first try
     prevGuess = np.zeros((1, aRows))
@@ -65,12 +65,17 @@ def jacobi(file_name, tolIn):
         guess2 = np.zeros((1, aCols))
         limit = limit + 1
 
+    #answers mod 2 to get real answers
+    for i in range(0,aCols):
+        guess[0,i] = guess[0,i]%2
 
-    print ('\n')
-    print(limit)
-    print ('\n')
-    print (guess)
-    print ('\n')
+    #print ('\n')
+    #print(limit)
+    #print ('\n')
+    #print (guess)
+    #print ('\n')
+
+
 
 
     if limit >= 100:
@@ -81,15 +86,17 @@ def jacobi(file_name, tolIn):
         return limit, guess, statement
 
 # This is only or when jacobi is used as a stand-alone module
-# Read command line argument. Must be exactly one argument.
+# Read command line argument. Must be exactly two arguments.
 # It outputs on the console
 if __name__ == '__main__':
     limit, guess, statement = jacobi(sys.argv[1], sys.argv[2])
     np.set_printoptions(precision=6, suppress=True)
 
     print ('\n')
+    print ("iterations:")
     print(limit)
     print ('\n')
+    print ("Final answer:")
     print (guess)
     print ('\n')
     print(statement)
