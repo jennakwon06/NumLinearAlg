@@ -82,14 +82,14 @@ def gauss_seidel(file_name, tolIn):
 # This is only or when gauss_seidel is used as a stand-alone module
 # Read command line argument. Must be exactly one argument.
 # It outputs on the console
-#if __name__ == '__main__':
- #   limit, guess, statement = gauss_seidel(sys.argv[1], sys.argv[2])
-  #
-   # print ('\n')
-   # print(limit)
-   # print ('\n')
-   # print (guess)
-    #print ('\n')
-   # print(statement)
+if __name__ == '__main__':
+    limit, guess, statement = gauss_seidel(sys.argv[1], sys.argv[2])
 
-gauss_seidel("c.dat", 1e-8)
+    print ('\n')
+    print(limit)
+    print ('\n')
+    print (guess)
+    print ('\n')
+    print(statement)
+
+#gauss_seidel("c.dat", 1e-8)

@@ -81,7 +81,7 @@ def jacobi(file_name, tolIn):
         return limit, guess, statement
 
 # This is only or when jacobi is used as a stand-alone module
-# Read command line argument. Must be exactly one argument.
+# Read command line argument. Must be exactly two arguments.
 # It outputs on the console
 if __name__ == '__main__':
     limit, guess, statement = jacobi(sys.argv[1], sys.argv[2])

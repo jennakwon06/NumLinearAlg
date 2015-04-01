@@ -151,8 +151,8 @@ def decode():
         return statement
     else:
         statement = ("Took " + str(limit) + " iterations to converge using Jacobi Method")
-        statement2 = ("Took " + str(limit2) + " iterations to converge using Jacobi Method")
-        #return limit, limit2, guess, statement, statement2
+        statement2 = ("Took " + str(limit2) + " iterations to converge using Gauss Seidel Method")
+        return limit, limit2, guess, statement, statement2
 
     print ('\n')
     print("Jacobi iterations:")
@@ -167,17 +167,18 @@ def decode():
 
 
 # This is only or when gauss_seidel is used as a stand-alone module
-# Read command line argument. Must be exactly one argument.
+# Read command line argument. Takes no inputs.
 # It outputs on the console
-#if __name__ == '__main__':
-#    limit, limit2, xStream, statement = decode()
-#    np.set_printoptions(precision=6, suppress=True)
+if __name__ == '__main__':
+    limit, limit2, xStream, statement, statement2 = decode()
+    np.set_printoptions(precision=6, suppress=True)
 
-#    print ('\n')
-#    print(limit)
-#    print ('\n')
-#    print (xStream)
-#    print ('\n')
-#    print(statement)
 
-decode()
+     print ('\n')
+    print (xStream)
+    print ('\n')
+    print(statement)
+    print ('\n')
+    print(statement2)
+
+#decode()
