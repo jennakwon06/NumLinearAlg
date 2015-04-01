@@ -19,7 +19,6 @@ def power_method(file_name, error_tol, u0):
     m = int(A.shape[0]) #rows of A
 
     u = np.asarray(np.asmatrix(u0))
-    print u
     uRows = int(u.shape[0]) #rows of u
     uCols = int(u.shape[1]) #columns of u
 
@@ -40,12 +39,9 @@ def power_method(file_name, error_tol, u0):
     while iteration < 100:
         copyA = LA.matrix_power(A, iteration+1)
         x = np.zeros(shape=(m, uCols))
-        print x
         for i in range(m):
             for j in range(uCols):
                 for k in range(uRows):
-                    print copyA[i][k]
-                    print u[k][j]
                     x[i][j] += (copyA[i][k] * u[k][j]) #Multiplies matrix A and u
         eigenvector = x / LA.norm(x) # Finds the dominant eigenvector
         eigenRows = int(eigenvector.shape[0]) #rows of dominant eigenvector
